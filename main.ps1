@@ -1,5 +1,7 @@
 # -------   HEADER   -------
 # File origin and destiny path
+$originFilePath = "$env:APPDATA\"
+$destinyFilePath = "$env:USERPROFILE\"
 $hashAlgorithm = "SHA512"
 
 # ------- END HEADER -------

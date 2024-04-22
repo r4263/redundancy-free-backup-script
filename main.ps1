@@ -1,10 +1,29 @@
 # -------   HEADER   -------
 # File origin and destiny path
-$originFilePath = "$env:APPDATA\Microsoft\" # The complete path to the file that will be copied;
-$targetPath = "$env:USERPROFILE\Desktop\" # Destination folder path;
+$originFilePath = "$env:APPDATA\Microsoft\Windows\Themes\TranscodedWallpaper" # The complete path to the file that will be copied;
+$targetPath = "$env:USERPROFILE\Desktop\wallpapers\" # Destination folder path;
 $hashAlgorithm = "SHA512" # Hash algorithm, using powershell's default method. See documentation at: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash to view available hash algorithms;
 
 # ------- END HEADER -------
+
+
+
+# --------------------------------------------------------------------------------------------
+# Copy function
+function copyItems() {
+    Clear-Host;
+    Write-Host ("Copying item...");
+    try {
+        $filename = ($baseName + (Get-Date -Format "HHmmssddMMyyyy").ToString());
+        Copy-Item $originFilePath ($targetPath + $filename) | Out-Null; # Hide output;
+        Write-Host("`nSuccessfully copied as: " + $filename + "`n");
+    }
+    catch {
+        Clear-Host;
+        Write-Host ("`nAn exception was encountered and the files could not be copied!`n");
+    }
+}
+# --------------------------------------------------------------------------------------------
 
 
 # Just an exception treatment to minimize the chances to blow the script away with them;
@@ -94,22 +113,4 @@ else {
 }
 
 Write-Host("Exiting...");
-Clear-Variable response, pass;
 Start-Sleep -Seconds 7
-
-
-# --------------------------------------------------------------------------------------------
-# Copy function
-function copyItems {
-    Clear-Host;
-    Write-Host ("Copying item...");
-    try {
-        $filename = ($baseName + (Get-Date -Format "HHmmssddMMyyyy").ToString());
-        Copy-Item $originFilePath ($targetPath + $filename) | Out-Null; # Hide output;
-        Write-Host("`nSuccessfully copied as: " + $filename + "`n");
-    }
-    catch {
-        Clear-Host;
-        Write-Host ("`nAn exception was encountered and the files could not be copied!`n");
-    }
-}

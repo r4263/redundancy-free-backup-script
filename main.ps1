@@ -1,7 +1,7 @@
 # -------   HEADER   -------
 # File origin and destiny path
-$originFilePath = "$env:APPDATA\Microsoft\Windows\Themes\TranscodedWallpaper" # The complete path to the file that will be copied;
-$targetPath = "$env:USERPROFILE\Desktop\wallpapers\" # Destination folder path;
+$originFilePath = "$env:APPDATA\Microsoft\" # The complete path to the file that will be copied;
+$targetPath = "$env:USERPROFILE\Desktop\" # Destination folder path;
 $hashAlgorithm = "SHA512" # Hash algorithm, using powershell's default method. See documentation at: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash to view available hash algorithms;
 
 # ------- END HEADER -------

@@ -14,7 +14,7 @@ function copyItems() {
     Clear-Host;
     Write-Host ("Copying item...");
     try {
-        $filename = ($baseName + (Get-Date -Format "HHmmssddMMyyyy").ToString());
+        $filename = ($baseName + (Get-Date -Format "ddMMyyyyHHmmss").ToString());
         Copy-Item $originFilePath ($targetPath + $filename) | Out-Null; # Hide output;
         Write-Host("`nSuccessfully copied as: " + $filename + "`n");
     }
